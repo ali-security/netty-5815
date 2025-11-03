@@ -30,7 +30,7 @@ env:
 
 jobs:
   verify-pr:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 8
@@ -106,7 +106,7 @@ jobs:
 
   build-pr-cross:
     # The host should always be Linux
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -162,7 +162,7 @@ jobs:
             JAVA_HOME=/usr/lib/jvm/java-11-openjdk-${{ matrix.java_arch || matrix.arch }} ./mvnw -V -B -ntp -pl testsuite-native -am clean package -DskipTests=true -Dcheckstyle.skip=true -DskipNativeTestsuite=false -Dtcnative.classifier=
 
   build-pr:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
